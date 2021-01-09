@@ -16,7 +16,7 @@ const TodoForm: React.FC<Props> = ({ dispatch }) => {
   };
 
   return (
-    <View>
+    <View style={{ marginBottom: 20 }}>
       <TextInput
         style={styles.input}
         placeholder="Your todo..."
