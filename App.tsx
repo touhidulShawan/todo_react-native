@@ -1,18 +1,22 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import Header from "./components/Header";
 import Todos from "./containers/Todos";
 
 const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Todos />
+    <View>
+      <Header />
+      <View style={styles.content}>
+        <Todos />
+      </View>
     </View>
   );
 };
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     padding: 40,
   },
 });

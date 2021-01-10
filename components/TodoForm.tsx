@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Action } from "../containers/Todos";
-import { StyleSheet, Button, TextInput, View } from "react-native";
+import { StyleSheet, Button, TextInput, View, Alert } from "react-native";
 
 interface Props {
   dispatch: React.Dispatch<Action>;
@@ -11,8 +11,14 @@ const TodoForm: React.FC<Props> = ({ dispatch }) => {
   const [todoName, setTodoName] = useState<string>("");
 
   const handleSubmit = () => {
-    dispatch({ type: "addTodo", payload: { name: todoName } });
-    setTodoName("");
+    if (todoName.length >= 5) {
+      dispatch({ type: "addTodo", payload: { name: todoName } });
+      setTodoName("");
+    } else {
+      Alert.alert("Something wrong!", "Todo is too short(min 5 character)", [
+        { text: "OK" },
+      ]);
+    }
   };
 
   return (
