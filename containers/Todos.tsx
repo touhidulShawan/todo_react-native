@@ -61,7 +61,7 @@ const Todos: React.FC = () => {
     </ScrollView>
   );
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <TodoForm dispatch={dispatch} />
       {renderTodos}
     </View>

@@ -11,7 +11,7 @@ import Todos from "./containers/Todos";
 const App: React.FC = () => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View>
+      <View style={styles.container}>
         <Header />
         <View style={styles.content}>
           <Todos />
@@ -23,7 +23,9 @@ const App: React.FC = () => {
 export default App;
 
 const styles = StyleSheet.create({
+  container: { flex: 1 },
   content: {
     padding: 40,
+    flex: 1,
   },
 });

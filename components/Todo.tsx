@@ -14,7 +14,13 @@ const Todo: React.FC<Props> = (props) => {
   };
 
   return (
-    <View style={{ marginTop: 10, marginBottom: 10 }}>
+    <View
+      style={{
+        flex: 1,
+        marginTop: 10,
+        marginBottom: 10,
+      }}
+    >
       <TouchableOpacity onPress={() => prassHandler(id)}>
         <Text
           style={[
