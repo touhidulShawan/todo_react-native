@@ -46,7 +46,6 @@ const newTodo = (todoName: string): TodoProps => {
 
 const Todos: React.FC = () => {
   const [todos, dispatch] = useReducer(reducer, []);
-
   const renderTodos = (
     <ScrollView>
       {todos.map((todo) => (
