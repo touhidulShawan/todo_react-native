@@ -11,12 +11,12 @@ const TodoForm: React.FC<Props> = ({ dispatch }) => {
   const [todoName, setTodoName] = useState<string>("");
 
   const handleSubmit = () => {
-    if (todoName.length >= 5) {
+    if (todoName.length >= 5 && todoName.length <= 30) {
       dispatch({ type: "addTodo", payload: { name: todoName } });
       setTodoName("");
     } else {
-      Alert.alert("Something wrong!", "Todo is too short(min 5 character)", [
-        { text: "OK" },
+      Alert.alert("Something wrong!", "Todo must be in 5-30 character", [
+        { text: "Try Again" },
       ]);
     }
   };

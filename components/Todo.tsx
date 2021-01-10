@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Action, TodoProps } from "../containers/Todos";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface Props extends TodoProps {
   dispatch: React.Dispatch<Action>;
@@ -9,8 +10,12 @@ interface Props extends TodoProps {
 const Todo: React.FC<Props> = (props) => {
   const { id, dispatch, isComplete, todoName } = props;
 
-  const prassHandler = (id: number) => {
+  const toggleComplete = (id: number) => {
     dispatch({ type: "toggleTodo", payload: { id: id } });
+  };
+
+  const deleteTodo = (id: number) => {
+    dispatch({ type: "deleteTodo", payload: { id: id } });
   };
 
   return (
@@ -21,15 +26,23 @@ const Todo: React.FC<Props> = (props) => {
         marginBottom: 10,
       }}
     >
-      <TouchableOpacity onPress={() => prassHandler(id)}>
-        <Text
-          style={[
-            styles.todo__text,
-            isComplete ? styles.completed : styles.not__completed,
-          ]}
-        >
-          {todoName}
-        </Text>
+      <TouchableOpacity onPress={() => toggleComplete(id)}>
+        <View style={styles.items}>
+          <Text
+            style={[
+              styles.text,
+              isComplete ? styles.completed : styles.not__completed,
+            ]}
+          >
+            {todoName}
+          </Text>
+          <MaterialIcons
+            name="delete"
+            size={20}
+            color="#DC2626"
+            onPress={() => deleteTodo(id)}
+          />
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -38,12 +51,18 @@ const Todo: React.FC<Props> = (props) => {
 export default Todo;
 
 const styles = StyleSheet.create({
-  todo__text: {
+  items: {
     backgroundColor: "#F5D0FE",
-    color: "#86198F",
-    padding: 15,
+    padding: 10,
     borderRadius: 3,
-    fontSize: 16,
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  text: {
+    color: "#86198F",
+    fontSize: 14,
   },
   completed: {
     textDecorationLine: "line-through",
