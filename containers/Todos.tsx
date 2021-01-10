@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useReducer } from "react";
-import { FlatList, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Todo from "../components/Todo";
 import TodoForm from "../components/TodoForm";
 
@@ -48,17 +48,17 @@ const Todos: React.FC = () => {
   const [todos, dispatch] = useReducer(reducer, []);
 
   const renderTodos = (
-    <FlatList
-      data={todos}
-      renderItem={({ item }) => (
+    <ScrollView>
+      {todos.map((todo) => (
         <Todo
-          id={item.id}
-          todoName={item.todoName}
-          isComplete={item.isComplete}
+          key={todo.id}
+          id={todo.id}
+          todoName={todo.todoName}
+          isComplete={todo.isComplete}
           dispatch={dispatch}
         />
-      )}
-    />
+      ))}
+    </ScrollView>
   );
   return (
     <View>

@@ -35,8 +35,9 @@ const styles = StyleSheet.create({
   todo__text: {
     backgroundColor: "#F5D0FE",
     color: "#86198F",
-    padding: 10,
+    padding: 15,
     borderRadius: 3,
+    fontSize: 16,
   },
   completed: {
     textDecorationLine: "line-through",
